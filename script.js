@@ -1,0 +1,39 @@
+const wordEl = document.getElementById('word');
+const wrongLettersEl = document.getElementById('wrong-letters');
+const playAgainBtn = document.getElementById('play-again');
+const popup = document.getElementById('popup-container');
+const notification = document.getElementById('notification-container');
+const finalMessage = document.getElementById('final-message');
+
+// Because there's more than 1 we need querySelectorAll
+const figureParts = document.querySelectorAll('.figure-part');
+
+const words = ['kroffdinner', 'application', 'programming', 'interface', 'wizard'];
+
+let selectedWord = words[Math.floor(Math.random() * words.length)];
+
+const correctLetters = [];
+const wrongLetters = [];
+
+// Show hidden word
+function displayWord() {
+  wordEl.innerHTML = `
+    ${selectedWord
+      .split('')
+      .map(letter => `
+        <span class="letter">
+          ${correctLetters.includes(letter) ? letter : ''}
+        </span>
+      `).join('')}
+  `;
+  // replace newline return with empty string
+  const innerWord = wordEl.innerText.replace(/\n/g, '');
+  
+      if(innerWord === selectedWord) {
+        finalMessage.innerText = `Congratulations! You won!`;
+        popup.style.display = 'flex';
+      }
+
+}
+
+displayWord();
