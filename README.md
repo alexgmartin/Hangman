@@ -1,5 +1,5 @@
 # Hangman
 Hangman game using svg to draw and ES6 for practice
 
-###Demo
+### Demo
 https://alexgmartin.github.io/Hangman/
